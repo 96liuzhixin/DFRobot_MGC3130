@@ -5,7 +5,7 @@
 
 
 
-![正反面svg效果图](https://github.com/cdjq/DFRobot_Gesture/raw/master/resources/images/SEN0245svg1.png)
+![正反面svg效果图](https://github.com/cdjq/DFRobot_Gesture/blob/master/resources/images/SEN0202.jpg)
 
 
 ## 产品链接（https://www.dfrobot.com.cn/goods-1342.html）
