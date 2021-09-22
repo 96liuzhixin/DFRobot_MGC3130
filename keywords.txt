@@ -1,0 +1,67 @@
+﻿#######################################
+# Syntax Coloring Map For DFRobot_Gesture
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+DFRobot_Gesture	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+begin	KEYWORD2
+reset	KEYWORD2
+sensorDataRecv	KEYWORD2
+lockDataOutput	KEYWORD2
+enableDataOutput	KEYWORD2
+enableGestures	KEYWORD2
+disableGestures	KEYWORD2
+disableAirWheel	KEYWORD2
+enableAirWheel	KEYWORD2
+disableApproachDetection	KEYWORD2
+enableApproachDetection	KEYWORD2
+disableTouchDetection	KEYWORD2
+enableTouchDetection	KEYWORD2
+getXposition	KEYWORD2
+getYposition	KEYWORD2
+getZposition	KEYWORD2
+getTouchInfo	KEYWORD2
+getGestureInfo	KEYWORD2
+havePositionInfo	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+eNoError	LITERAL1
+eUnknownCommand	LITERAL1
+eWrongParameterValue	LITERAL1
+eUnknownParameterID	LITERAL1
+eWakeupHappend	LITERAL1
+DFRobot_Gesture_IIC_ADDR	LITERAL1
+eNoGesture	LITERAL1
+eGarbageModel	LITERAL1
+eFilckR	LITERAL1
+eFilckL	LITERAL1
+eFilckU	LITERAL1
+eFilckD	LITERAL1
+eCircleClockwise	LITERAL1
+eCircleCounterclockwise	LITERAL1
+eTouchSouth	LITERAL1
+eTouchWest	LITERAL1
+eTouchNorth	LITERAL1
+eTouchEast	LITERAL1
+eTouchCenter	LITERAL1
+eTapSouth	LITERAL1
+eTapWest	LITERAL1
+eTapNorth	LITERAL1
+eTapEast	LITERAL1
+eTapCenter	LITERAL1
+eDoubleTapSouth	LITERAL1
+eDoubleTapWest	LITERAL1
+eDoubleTapNorth	LITERAL1
+eDoubleTapEast	LITERAL1
+eDoubleTapCenter	LITERAL1
+
+ 
