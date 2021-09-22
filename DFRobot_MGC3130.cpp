@@ -1,19 +1,19 @@
 /*!
- * @file DFRobot_Gesture.cpp
+ * @file DFRobot_MGC3130.cpp
  * @brief 定义DFRobot_Sensor 类的基础结构，基础方法的实现
  * @copyright	Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  * @licence     The MIT License (MIT)
  * @author [yangfeng](feng.yang@dfrobot.com)
  * @version  V1.0
  * @date  2021-09-18
- * @url https://github.com/DFRobot/DFRobot_Gesture
+ * @url https://github.com/DFRobot/DFRobot_MGC3130
  */
-#include <DFRobot_Gesture.h>
+#include <DFRobot_MGC3130.h>
 
 
-DFRobot_Gesture::DFRobot_Gesture(uint8_t TSPin,uint8_t restPin,TwoWire *pWire)
+DFRobot_MGC3130::DFRobot_MGC3130(uint8_t TSPin,uint8_t restPin,TwoWire *pWire)
 {
-  _deviceAddr = DFRobot_Gesture_IIC_ADDR;
+  _deviceAddr = DFRobot_MGC3130_IIC_ADDR;
   _pWire = pWire;
   _tsPin = TSPin;
   _resPin = restPin;
@@ -21,9 +21,10 @@ DFRobot_Gesture::DFRobot_Gesture(uint8_t TSPin,uint8_t restPin,TwoWire *pWire)
   lastTimeStamp=0 ;
 }
 
-int DFRobot_Gesture::begin(void)
+int DFRobot_MGC3130::begin(void)
 {
   _pWire->begin();
+  _pWire->setClock(400000);
   tsInput();
   reset();
   uint32_t time = millis();
@@ -52,7 +53,7 @@ int DFRobot_Gesture::begin(void)
   }
   return true;
 }
-void DFRobot_Gesture:: reset()
+void DFRobot_MGC3130:: reset()
 {
   pinMode(_resPin,OUTPUT);
   digitalWrite(_resPin,LOW);
@@ -60,23 +61,23 @@ void DFRobot_Gesture:: reset()
   digitalWrite(_resPin,HIGH);
   delay(2000);
 }
-void DFRobot_Gesture::tsInput(void)
+void DFRobot_MGC3130::tsInput(void)
 {
   pinMode(_tsPin,INPUT);//INPUT_PULLUP
 }
-void DFRobot_Gesture::tsOutput(void)
+void DFRobot_MGC3130::tsOutput(void)
 {
   pinMode(_tsPin,OUTPUT);
 }
-void DFRobot_Gesture::tsWrite(uint8_t mode)
+void DFRobot_MGC3130::tsWrite(uint8_t mode)
 {
   digitalWrite(_tsPin,mode);
 }
-uint8_t DFRobot_Gesture::tsRead()
+uint8_t DFRobot_MGC3130::tsRead()
 {
   return digitalRead(_tsPin);
 }
-int8_t DFRobot_Gesture::enableTouchDetection()
+int8_t DFRobot_MGC3130::enableTouchDetection()
 {
   uint8_t pBuf[]={0x97,0x00,0x00,0x00,0x08,0x00,0x00,0x00,0x08,0x00,0x00,0x00};
   uint8_t recvBuf[16];
@@ -92,7 +93,7 @@ int8_t DFRobot_Gesture::enableTouchDetection()
   }
   return ret;
 }
-int8_t DFRobot_Gesture::disableTouchDetection()
+int8_t DFRobot_MGC3130::disableTouchDetection()
 {
   uint8_t pBuf[]={0x97,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x08,0x00,0x00,0x00};
   uint8_t recvBuf[16];
@@ -108,7 +109,7 @@ int8_t DFRobot_Gesture::disableTouchDetection()
   }
   return ret;
 }
-int8_t DFRobot_Gesture::enableApproachDetection()
+int8_t DFRobot_MGC3130::enableApproachDetection()
 {
   uint8_t pBuf[]={0x97,0x00,0x00,0x00,0x01,0x00,0x00,0x00,0x01,0x00,0x00,0x00};
   uint8_t recvBuf[16];
@@ -124,7 +125,7 @@ int8_t DFRobot_Gesture::enableApproachDetection()
   }
   return ret;
 }
-int8_t DFRobot_Gesture::disableApproachDetection()
+int8_t DFRobot_MGC3130::disableApproachDetection()
 {
   uint8_t pBuf[]={0x97,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x01,0x00,0x00,0x00};
   uint8_t recvBuf[16];
@@ -141,7 +142,7 @@ int8_t DFRobot_Gesture::disableApproachDetection()
   return ret;
 }
 
-int8_t DFRobot_Gesture::enableAirWheel()
+int8_t DFRobot_MGC3130::enableAirWheel()
 {
   uint8_t pBuf[]={0x90,0x00,0x00,0x00,0x20,0x00,0x00,0x00,0x20,0x00,0x00,0x00};
   uint8_t recvBuf[16];
@@ -157,7 +158,7 @@ int8_t DFRobot_Gesture::enableAirWheel()
   }
   return ret;
 }
-int8_t DFRobot_Gesture::disableAirWheel()
+int8_t DFRobot_MGC3130::disableAirWheel()
 {
   uint8_t pBuf[]={0x90,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x20,0x00,0x00,0x00};
   uint8_t recvBuf[16];
@@ -175,7 +176,7 @@ int8_t DFRobot_Gesture::disableAirWheel()
 }
 
 
-int8_t DFRobot_Gesture::enableGestures()
+int8_t DFRobot_MGC3130::enableGestures()
 {
   uint8_t pBuf[]={0x85,0x00, 0x00,0x00, 0x7F,0x00,0x00,0x00, 0x7F,0x00,0x00,0x00};
   uint8_t recvBuf[16];
@@ -192,7 +193,7 @@ int8_t DFRobot_Gesture::enableGestures()
   return ret;
 }
 
-int8_t DFRobot_Gesture::disableGestures()
+int8_t DFRobot_MGC3130::disableGestures()
 {
   uint8_t pBuf[]={0x85,0x00, 0x00,0x00, 0x00,0x00,0x00,0x00, 0x00,0x00,0x00,0x00};
   uint8_t recvBuf[16];
@@ -208,7 +209,7 @@ int8_t DFRobot_Gesture::disableGestures()
   }
   return ret;
 }
-int8_t DFRobot_Gesture::enableDataOutput()
+int8_t DFRobot_MGC3130::enableDataOutput()
 {
   uint8_t pBuf[]={0xA0,0x00, 0x00,0x00, 0x1E,0x00,0x00,0x00, 0xFF,0xFF,0xFF,0xFF};
   uint8_t recvBuf[16];
@@ -224,7 +225,7 @@ int8_t DFRobot_Gesture::enableDataOutput()
   }
   return ret;
 }
-int8_t DFRobot_Gesture::lockDataOutput()
+int8_t DFRobot_MGC3130::lockDataOutput()
 {
   uint8_t pBuf[]={0xA1,0x00, 0x00,0x00, 0x1E,0x00,0x00,0x00, 0xFF,0xFF,0xFF,0xFF};
   uint8_t recvBuf[16];
@@ -240,19 +241,19 @@ int8_t DFRobot_Gesture::lockDataOutput()
   }
   return ret;
 }
-uint16_t DFRobot_Gesture:: getXposition()
+uint16_t DFRobot_MGC3130:: getXposition()
 {
   return info.xPosition;
 }
-uint16_t DFRobot_Gesture:: getYposition()
+uint16_t DFRobot_MGC3130:: getYposition()
 {
   return info.yPosition;
 }
-uint16_t DFRobot_Gesture:: getZposition()
+uint16_t DFRobot_MGC3130:: getZposition()
 {
   return info.zPosition;
 }
-uint16_t DFRobot_Gesture:: getTouchInfo()
+uint16_t DFRobot_MGC3130:: getTouchInfo()
 {
   uint16_t data = 0;
   data = info.touchInfo & 0xFFFF;
@@ -271,16 +272,16 @@ uint16_t DFRobot_Gesture:: getTouchInfo()
   return data;
 }
 
-uint8_t DFRobot_Gesture:: getGestureInfo()
+uint8_t DFRobot_MGC3130:: getGestureInfo()
 {
 
   return (uint8_t) (info.gestureInfo & 0xFF);
 }
-bool DFRobot_Gesture:: havePositionInfo()
+bool DFRobot_MGC3130:: havePositionInfo()
 {
   return position;
 }
-void DFRobot_Gesture:: sensorDataRecv()
+void DFRobot_MGC3130:: sensorDataRecv()
 {
   uint8_t pbuf[24];
   if(read(pbuf,24)!=0){
@@ -326,7 +327,7 @@ void DFRobot_Gesture:: sensorDataRecv()
   }
 }
 
-uint8_t DFRobot_Gesture::setRuntimeparameter(void* pBuf,size_t size)
+uint8_t DFRobot_MGC3130::setRuntimeparameter(void* pBuf,size_t size)
 {
   if(pBuf == NULL){
     DBG("pBuf ERROR!! : null pointer");
@@ -343,7 +344,7 @@ uint8_t DFRobot_Gesture::setRuntimeparameter(void* pBuf,size_t size)
   _pWire->endTransmission();
   return size;
 }
-uint8_t DFRobot_Gesture::read(void* pBuf, size_t size)
+uint8_t DFRobot_MGC3130::read(void* pBuf, size_t size)
 {
   if(pBuf == NULL){
     DBG("pBuf ERROR!! : null pointer");

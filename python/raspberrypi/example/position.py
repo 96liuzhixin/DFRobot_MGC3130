@@ -7,16 +7,16 @@
   # @author [yangfeng]<feng.yang@dfrobot.com>
   # @version V1.0
   # @date 2021-09-18
-  # @url  https://github.com/DFRobot/DFRobot_Gesture
+  # @url  https://github.com/DFRobot/DFRobot_MGC3130
 """
 import sys
 sys.path.append("../") # set system path to top
 import time
-from DFRobot_Gesture import *
+from DFRobot_MGC3130 import *
 import RPi.GPIO as GPIO
 
 # IO编号采用BCM格式
-myGesture = DFRobot_Gesture(ts_pin=20,reset_pin = 21,bus = 1)
+myGesture = DFRobot_MGC3130(ts_pin=20,reset_pin = 21,bus = 1)
 
 def setup():
   '''

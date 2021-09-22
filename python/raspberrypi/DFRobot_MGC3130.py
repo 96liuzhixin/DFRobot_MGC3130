@@ -1,13 +1,13 @@
 # -*- coding:utf-8 -*-
-""" file DFRobot_Gesture.py
-  # DFRobot_Gesture 类的基础结构，基础方法的实现
+""" file DFRobot_MGC3130.py
+  # DFRobot_MGC3130 类的基础结构，基础方法的实现
   @copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
   @licence     The MIT License (MIT)
   @author     [yangfeng](feng.yang@dfrobot.com)
   @version  V1.0
   @date  2021-09-18
   @get from https://www.dfrobot.com
-  @url https://github.com/DFRobot/DFRobot_Gesture
+  @url https://github.com/DFRobot/DFRobot_MGC3130
 """
 import sys
 import smbus
@@ -28,9 +28,9 @@ formatter = logging.Formatter("%(asctime)s - [%(filename)s %(funcName)s]:%(linen
 ph.setFormatter(formatter) 
 logger.addHandler(ph)
 
-DFRobot_Gesture_IIC_ADDR = 0x42
+DFRobot_MGC3130_IIC_ADDR = 0x42
 
-class DFRobot_Gesture(object):
+class DFRobot_MGC3130(object):
   def __init__(self,ts_pin,reset_pin,bus = 1):
     self.now_touch                    = 0
     self.last_touch                   = 0
@@ -74,7 +74,7 @@ class DFRobot_Gesture(object):
     self.last_time_stamp = 0
     self.now_time_stamp = 0
     self.i2cbus=smbus.SMBus(bus)
-    self.i2c_addr = DFRobot_Gesture_IIC_ADDR
+    self.i2c_addr = DFRobot_MGC3130_IIC_ADDR
 
   '''
     @brief 初始化函数

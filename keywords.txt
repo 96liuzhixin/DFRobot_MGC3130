@@ -1,12 +1,12 @@
 ﻿#######################################
-# Syntax Coloring Map For DFRobot_Gesture
+# Syntax Coloring Map For DFRobot_MGC3130
 #######################################
 
 #######################################
 # Datatypes (KEYWORD1)
 #######################################
 
-DFRobot_Gesture	KEYWORD1
+DFRobot_MGC3130	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
@@ -39,7 +39,7 @@ eUnknownCommand	LITERAL1
 eWrongParameterValue	LITERAL1
 eUnknownParameterID	LITERAL1
 eWakeupHappend	LITERAL1
-DFRobot_Gesture_IIC_ADDR	LITERAL1
+DFRobot_MGC3130_IIC_ADDR	LITERAL1
 eNoGesture	LITERAL1
 eGarbageModel	LITERAL1
 eFilckR	LITERAL1

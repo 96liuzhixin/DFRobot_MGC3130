@@ -1,15 +1,15 @@
 /*!
- * @file DFRobot_Gesture.h
- * @brief DFRobot_Gesture 类的基础结构
+ * @file DFRobot_MGC3130.h
+ * @brief DFRobot_MGC3130 类的基础结构
  * @copyright	Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  * @licence     The MIT License (MIT)
  * @author [yangfeng](feng.yang@dfrobot.com)
  * @version  V1.0
  * @date  2021-09-18
- * @url https://github.com/DFRobot/DFRobot_Gesture
+ * @url https://github.com/DFRobot/DFRobot_MGC3130
  */
-#ifndef __DFROBOT_GESTURE_H
-#define __DFROBOT_GESTURE_H
+#ifndef __DFRobot_MGC3130_H
+#define __DFRobot_MGC3130_H
 
 #include <Arduino.h>
 #include <Wire.h>
@@ -23,8 +23,8 @@
 #define DBG(...)
 #endif
 
-#define DFRobot_Gesture_IIC_ADDR 0x42
-class DFRobot_Gesture{
+#define DFRobot_MGC3130_IIC_ADDR 0x42
+class DFRobot_MGC3130{
 public:
   typedef struct {
     uint32_t gestureInfo;
@@ -74,7 +74,7 @@ public:
     eDoubleTapCenter  = 16384,       /**< Double Tap Center electrode */
   }eTouchInfo_t;
 
-  DFRobot_Gesture(uint8_t TSPin,uint8_t restPin ,TwoWire *pWire=&Wire);
+  DFRobot_MGC3130(uint8_t TSPin,uint8_t restPin ,TwoWire *pWire=&Wire);
   /**
    * @brief 初始化函数
    * @return 返回0表示初始化成功，返回其他值表示初始化失败

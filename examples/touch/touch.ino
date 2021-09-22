@@ -6,7 +6,7 @@
  * @author [yangfeng]<feng.yang@dfrobot.com>
  * @version V1.0
  * @date 2021-09-18
- * @url  https://github.com/DFRobot/DFRobot_Gesture
+ * @url  https://github.com/DFRobot/DFRobot_MGC3130
  * 
  * Hardware Connections:
  * HOST Pin    SENSOR PIN        Function
@@ -16,19 +16,20 @@
  *  SDA          SDA              I2C Data
  *  7            D                Digital port
  */
-#include <DFRobot_Gesture.h>
+#include <DFRobot_MGC3130.h>
 
 #if defined(ESP32) || defined(ESP8266)
-uint8_t TSPin= D9;
-uint8_t restPin= D3;
+  uint8_t TSPin= D9;
+  uint8_t restPin= D3;
 #elif defined(ARDUINO_SAM_ZERO)
-uint8_t TSPin= 6;
-uint8_t restPin= 7;
+  uint8_t TSPin= 6;
+  uint8_t restPin= 7;
 #else
-uint8_t TSPin= 8;
-uint8_t restPin= 9;
+  uint8_t TSPin= 8;
+  uint8_t restPin= 9;
+#endif
 
-DFRobot_Gesture myGesture(TSPin,restPin);
+DFRobot_MGC3130 myGesture(TSPin,restPin);
 
 void setup()
 {

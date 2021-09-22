@@ -1,4 +1,4 @@
-# DFRobot_Gesture
+# DFRobot_MGC3130
 
 - [English Version](./README.md)
 
@@ -6,10 +6,10 @@
 
 
 
-![正反面svg效果图](https://github.com/cdjq/DFRobot_Gesture/blob/master/resources/images/SEN0202.jpg)
+![](../../resources/images/SEN0202.jpg)
 
 
-## Product Link（https://www.dfrobot.com/product-1538.html ）
+## Product Link（https://www.dfrobot.com/product-1538.html）
 
     SKU：SEN0202
 
