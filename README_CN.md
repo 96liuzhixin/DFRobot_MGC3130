@@ -55,18 +55,6 @@
   void sensorDataRecv();
 
   /**
-   * @brief 锁定传感器的输出数据格式
-   * @return 返回-1代表设置失败，0代表设置成功
-   */
-  int8_t lockDataOutput();
-
-  /**
-   * @brief 设置传感器的输出数据格式
-   * @return 返回-1代表设置失败，0代表设置成功
-   */
-  int8_t enableDataOutput();
-
-  /**
    * @brief 使能手势识别功能
    * @return 返回-1代表设置失败，0代表设置成功
    */
@@ -118,19 +106,19 @@
    * @brief 获取X轴位置
    * @return X轴位置
    */
-  uint16_t getXposition();
+  uint16_t getPositionX();
 
   /**
    * @brief 获取Y轴位置
    * @return Y轴位置
    */
-  uint16_t getYposition();
+  uint16_t getPositionY();
 
   /**
    * @brief 获取Z轴位置
    * @return Z轴位置
    */
-  uint16_t getZposition();
+  uint16_t getPositionZ();
 
   /**
    * @brief 获取接触信息

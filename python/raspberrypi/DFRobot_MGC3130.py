@@ -31,7 +31,7 @@ logger.addHandler(ph)
 DFRobot_MGC3130_IIC_ADDR = 0x42
 
 class DFRobot_MGC3130(object):
-  def __init__(self,ts_pin,reset_pin,bus = 1):
+  def __init__(self,d_pin,mclr_pin,bus = 1):
     self.now_touch                    = 0
     self.last_touch                   = 0
     self.gesture_info                 = 0
@@ -68,8 +68,8 @@ class DFRobot_MGC3130(object):
     self.DOUBLE_TAP_NORTH             = 4096
     self.DOUBLE_TAP_EAST              = 8192
     self.DOUBLE_TAP_CENTER            = 16384
-    self._ts_pin = ts_pin
-    self._reset_pin = reset_pin
+    self._ts_pin = d_pin
+    self._reset_pin = mclr_pin
     self.position = False
     self.last_time_stamp = 0
     self.now_time_stamp = 0
@@ -91,6 +91,10 @@ class DFRobot_MGC3130(object):
     while(self.disable_air_wheel()!=0):
       ret = True
     while(self.disable_gestures()!=0):
+      ret = True
+    while(self._enable_data_output()!=0):
+      ret = True
+    while(self._lock_data_output()!=0):
       ret = True
     return ret
 
@@ -227,36 +231,6 @@ class DFRobot_MGC3130(object):
     return ret
 
   '''
-    @brief 设置传感器的输出数据格式
-    @return 返回-1代表设置失败，0代表设置成功
-  '''
-  def enable_data_output(self):
-    ret = -1
-    buf=[0x00,0x00,0xA2,0xA0,0x00, 0x00,0x00, 0x1E,0x00,0x00,0x00, 0xFF,0xFF,0xFF,0xFF]
-    recv_buf=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-    self._set_runtime_parameter(buf,16)
-    recv_buf = self._read(16)
-    if(recv_buf != 0):
-      if(recv_buf[4] == 0xA2):
-        ret = recv_buf[7]>>8 | recv_buf[6]
-    return ret
-
-  '''
-    @brief 锁定传感器的输出数据格式
-    @return 返回-1代表设置失败，0代表设置成功
-  '''
-  def lock_data_output(self):
-    ret = -1
-    buf=[0x00,0x00,0xA2,0xA1,0x00, 0x00,0x00, 0x1E,0x00,0x00,0x00, 0xFF,0xFF,0xFF,0xFF]
-    recv_buf=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-    self._set_runtime_parameter(buf,16)
-    recv_buf = self._read(16)
-    if(recv_buf != 0):
-      if(recv_buf[4] == 0xA2):
-        ret = recv_buf[7]>>8 | recv_buf[6]
-    return ret
-
-  '''
     @brief 获取X轴位置
     @return X轴位置
   '''
@@ -314,6 +288,13 @@ class DFRobot_MGC3130(object):
     @brief 获取传感器数据
   '''
   def sensor_data_recv(self):
+    self.position = False
+    self.x_position = 0
+    self.y_position = 0
+    self.z_position = 0
+    self.air_wheel_info = 0
+    self.gesture_info = 0
+    self.touch_info = 0
     buf=self._read(24)
     if(buf!=0):
       if((buf[3] == 0x91) and (buf[4] == 0x1E)):
@@ -323,34 +304,46 @@ class DFRobot_MGC3130(object):
         self.now_touch = buf[12] | buf[13]<<8
         if(buf[7] & 0x02):
           self.air_wheel_info = buf[16] | buf[17]<<8
-        else:
-          self.air_wheel_info = 0
         if(buf[7] & 0x01):
           self.position = True
           self.x_position = buf[18] | buf[19]<<8
           self.y_position = buf[20] | buf[21]<<8
           self.z_position = buf[22] | buf[23]<<8
-        else:
-          self.position = False
-          self.x_position = 0
-          self.y_position = 0
-          self.z_position = 0
-      else:
-          self.position = False
-          self.x_position = 0
-          self.y_position = 0
-          self.z_position = 0
-          self.air_wheel_info = 0
-          self.gesture_info = 0
-          self.touch_info = 0
-    else:
-      self.position = False
-      self.x_position = 0
-      self.y_position = 0
-      self.z_position = 0
-      self.air_wheel_info = 0
-      self.gesture_info = 0
-      self.touch_info = 0
+      elif(buf[4] == 0x1F):
+        while(self._enable_data_output()!=0):
+          ret = True
+        while(self._lock_data_output()!=0):
+          ret = True
+
+  '''
+    @brief 设置传感器的输出数据格式
+    @return 返回-1代表设置失败，0代表设置成功
+  '''
+  def _enable_data_output(self):
+    ret = -1
+    buf=[0x00,0x00,0xA2,0xA0,0x00, 0x00,0x00, 0x1E,0x00,0x00,0x00, 0xFF,0xFF,0xFF,0xFF]
+    recv_buf=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    self._set_runtime_parameter(buf,16)
+    recv_buf = self._read(16)
+    if(recv_buf != 0):
+      if(recv_buf[4] == 0xA2):
+        ret = recv_buf[7]>>8 | recv_buf[6]
+    return ret
+
+  '''
+    @brief 锁定传感器的输出数据格式
+    @return 返回-1代表设置失败，0代表设置成功
+  '''
+  def _lock_data_output(self):
+    ret = -1
+    buf=[0x00,0x00,0xA2,0xA1,0x00, 0x00,0x00, 0x1E,0x00,0x00,0x00, 0xFF,0xFF,0xFF,0xFF]
+    recv_buf=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    self._set_runtime_parameter(buf,16)
+    recv_buf = self._read(16)
+    if(recv_buf != 0):
+      if(recv_buf[4] == 0xA2):
+        ret = recv_buf[7]>>8 | recv_buf[6]
+    return ret
 
   '''
     @brief 设置主机的ts_pin为输入模式(TS:transfer status line)
@@ -404,5 +397,6 @@ class DFRobot_MGC3130(object):
     data = self.i2cbus.read_i2c_block_data(self.i2c_addr, 0x00, len)
     self._ts_write(1)
     self._ts_input()
+    time.sleep(0.05)
     return data
 

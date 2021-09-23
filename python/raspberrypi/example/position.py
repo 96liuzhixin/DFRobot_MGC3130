@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 """ file DFRobot_Sensor.py
   # @file position.ino
-  # @brief 位置识别，x,y,z轴上数据
+  # @brief 位置识别，x,y,z轴上数据(零点在触板的西南位置，丝印Down处)
   # @copyright Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
   # @licence The MIT License (MIT)
   # @author [yangfeng]<feng.yang@dfrobot.com>
@@ -16,7 +16,7 @@ from DFRobot_MGC3130 import *
 import RPi.GPIO as GPIO
 
 # IO编号采用BCM格式
-myGesture = DFRobot_MGC3130(ts_pin=20,reset_pin = 21,bus = 1)
+myGesture = DFRobot_MGC3130(d_pin=20,mclr_pin = 21,bus = 1)
 
 def setup():
   '''
@@ -34,22 +34,6 @@ def setup():
   while(myGesture.enable_approach_detection()!=0):
     print("enable approach detection err")
   print("enable approach detection success")
-
-  '''
-    @brief 设置传感器的输出数据格式
-    @return 返回-1代表设置失败，0代表设置成功
-  '''
-  while(myGesture.enable_data_output()!=0):
-    print("enable data output err")
-  print("enable data output success")
-
-  '''
-    @brief 锁定传感器的输出数据格式
-    @return 返回-1代表设置失败，0代表设置成功
-  '''
-  while(myGesture.lock_data_output()!=0):
-    print("lock data output err")
-  print("lock data output success")
 
 def loop():
   '''

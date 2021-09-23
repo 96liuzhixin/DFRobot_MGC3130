@@ -16,7 +16,7 @@ from DFRobot_MGC3130 import *
 import RPi.GPIO as GPIO
 
 # IO编号采用BCM格式
-myGesture = DFRobot_MGC3130(ts_pin=20,reset_pin = 21,bus = 1)
+myGesture = DFRobot_MGC3130(d_pin=20,mclr_pin = 21,bus = 1)
 
 def setup():
   '''
@@ -34,23 +34,6 @@ def setup():
   while(myGesture.enable_gestures()!=0):
     print("enable gestures err")
   print("enable gestures success")
-
-  '''
-    @brief 设置传感器的输出数据格式
-    @return 返回-1代表设置失败，0代表设置成功
-  '''
-  while(myGesture.enable_data_output()!=0):
-    print("enable data output err")
-  print("enable data output success")
-
-  '''
-    @brief 锁定传感器的输出数据格式
-    @return 返回-1代表设置失败，0代表设置成功
-  '''
-  while(myGesture.lock_data_output()!=0):
-    print("lock data output err")
-  print("lock data output success")
-  
 
 def loop():
 

@@ -14,22 +14,24 @@
  *  3.3V-5V      VCC              Power
  *  SCL          SCL              I2C Clock
  *  SDA          SDA              I2C Data
- *  7            D                Digital port
+ *  DPin         D                Transfer Status Line
+ *  MCLRPin      MCLR             reset
  */
 #include <DFRobot_MGC3130.h>
 
+//建议使用以下引脚，但用户可自定义（要求引脚具有输入和输出功能）
 #if defined(ESP32) || defined(ESP8266)
-  uint8_t TSPin= D9;
-  uint8_t restPin= D3;
+  uint8_t DPin= D9;
+  uint8_t MCLRPin= D3;
 #elif defined(ARDUINO_SAM_ZERO)
-  uint8_t TSPin= 6;
-  uint8_t restPin= 7;
+  uint8_t DPin= 6;
+  uint8_t MCLRPin= 7;
 #else
-  uint8_t TSPin= 8;
-  uint8_t restPin= 9;
+  uint8_t DPin= 8;
+  uint8_t MCLRPin= 9;
 #endif
 
-DFRobot_MGC3130 myGesture(TSPin,restPin);
+DFRobot_MGC3130 myGesture(DPin,MCLRPin);
 
 void setup()
 {
@@ -37,7 +39,7 @@ void setup()
   Serial.begin(115200);
   /**
    * @brief 初始化函数
-   * @return 返回0表示初始化成功，返回其他值表示初始化失败
+   * @return 返回true 表示初始化成功，返回false初始化失败
    */
   while(!myGesture.begin()){
     delay(100);
@@ -48,25 +50,18 @@ void setup()
    * @brief 关闭AirWheel功能
    * @return 返回-1代表设置失败，0代表设置成功
    */
-  while(myGesture.disableAirWheel()!=0);
-
+  while(myGesture.disableAirWheel()!=0){
+    delay(100);
+  }
   /**
    * @brief 使能手势识别功能
    * @return 返回-1代表设置失败，0代表设置成功
    */
-  while(myGesture.enableGestures()!=0);
+  while(myGesture.enableGestures()!=0){
+    delay(100);
+  }
 
-  /**
-   * @brief 设置传感器的输出数据格式
-   * @return 返回-1代表设置失败，0代表设置成功
-   */
-  while(myGesture.enableDataOutput()!=0);
-
-  /**
-   * @brief 锁定传感器的输出数据格式
-   * @return 返回-1代表设置失败，0代表设置成功
-   */
-  while(myGesture.lockDataOutput()!=0);
+  Serial.println("config success!!!");
 }
 
 

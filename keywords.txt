@@ -14,8 +14,6 @@ DFRobot_MGC3130	KEYWORD1
 begin	KEYWORD2
 reset	KEYWORD2
 sensorDataRecv	KEYWORD2
-lockDataOutput	KEYWORD2
-enableDataOutput	KEYWORD2
 enableGestures	KEYWORD2
 disableGestures	KEYWORD2
 disableAirWheel	KEYWORD2
@@ -24,9 +22,9 @@ disableApproachDetection	KEYWORD2
 enableApproachDetection	KEYWORD2
 disableTouchDetection	KEYWORD2
 enableTouchDetection	KEYWORD2
-getXposition	KEYWORD2
-getYposition	KEYWORD2
-getZposition	KEYWORD2
+getPositionX	KEYWORD2
+getPositionY	KEYWORD2
+getPositionZ	KEYWORD2
 getTouchInfo	KEYWORD2
 getGestureInfo	KEYWORD2
 havePositionInfo	KEYWORD2

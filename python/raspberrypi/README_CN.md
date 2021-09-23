@@ -98,18 +98,6 @@
   def disable_gestures(self)
 
   '''
-    @brief 设置传感器的输出数据格式
-    @return 返回-1代表设置失败，0代表设置成功
-  '''
-  def enable_data_output(self)
-
-  '''
-    @brief 锁定传感器的输出数据格式
-    @return 返回-1代表设置失败，0代表设置成功
-  '''
-  def lock_data_output(self)
-
-  '''
     @brief 获取X轴位置
     @return X轴位置
   '''

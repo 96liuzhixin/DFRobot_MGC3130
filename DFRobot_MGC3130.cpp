@@ -10,13 +10,12 @@
  */
 #include <DFRobot_MGC3130.h>
 
-
-DFRobot_MGC3130::DFRobot_MGC3130(uint8_t TSPin,uint8_t restPin,TwoWire *pWire)
+DFRobot_MGC3130::DFRobot_MGC3130(uint8_t DPin,uint8_t MCLRPin ,TwoWire *pWire)
 {
   _deviceAddr = DFRobot_MGC3130_IIC_ADDR;
   _pWire = pWire;
-  _tsPin = TSPin;
-  _resPin = restPin;
+  _tsPin = DPin;
+  _resPin = MCLRPin;
   position = false;
   lastTimeStamp=0 ;
 }
@@ -24,7 +23,6 @@ DFRobot_MGC3130::DFRobot_MGC3130(uint8_t TSPin,uint8_t restPin,TwoWire *pWire)
 int DFRobot_MGC3130::begin(void)
 {
   _pWire->begin();
-  _pWire->setClock(400000);
   tsInput();
   reset();
   uint32_t time = millis();
@@ -33,26 +31,45 @@ int DFRobot_MGC3130::begin(void)
       return false;
     }
   }
+
   time = millis();
   while(disableApproachDetection()!=0){
     if(millis() - time > 2000){
       return false;
     }
   }
+
   time = millis();
   while(disableAirWheel()!=0){
     if(millis() - time > 2000){
       return false;
     }
   }
+
   time = millis();
   while(disableGestures()!=0){
     if(millis() - time > 2000){
       return false;
     }
   }
+
+  time = millis();
+  while(enableDataOutput()!=0){
+    if(millis() - time > 2000){
+      return false;
+    }
+  }
+
+  time = millis();
+  while(lockDataOutput()!=0){
+    if(millis() - time > 2000){
+      return false;
+    }
+  }
   return true;
 }
+
+
 void DFRobot_MGC3130:: reset()
 {
   pinMode(_resPin,OUTPUT);
@@ -63,7 +80,7 @@ void DFRobot_MGC3130:: reset()
 }
 void DFRobot_MGC3130::tsInput(void)
 {
-  pinMode(_tsPin,INPUT);//INPUT_PULLUP
+  pinMode(_tsPin,INPUT);
 }
 void DFRobot_MGC3130::tsOutput(void)
 {
@@ -241,15 +258,15 @@ int8_t DFRobot_MGC3130::lockDataOutput()
   }
   return ret;
 }
-uint16_t DFRobot_MGC3130:: getXposition()
+uint16_t DFRobot_MGC3130:: getPositionX()
 {
   return info.xPosition;
 }
-uint16_t DFRobot_MGC3130:: getYposition()
+uint16_t DFRobot_MGC3130:: getPositionY()
 {
   return info.yPosition;
 }
-uint16_t DFRobot_MGC3130:: getZposition()
+uint16_t DFRobot_MGC3130:: getPositionZ()
 {
   return info.zPosition;
 }
@@ -284,6 +301,8 @@ bool DFRobot_MGC3130:: havePositionInfo()
 void DFRobot_MGC3130:: sensorDataRecv()
 {
   uint8_t pbuf[24];
+  position = false;
+  memset((void *)&info,0,sizeof(info));
   if(read(pbuf,24)!=0){
     if((pbuf[3] == 0x91) && (pbuf[4] == 0x1E)){
       info.gestureInfo  = pbuf[8]  | (uint32_t)pbuf[9]<<8  | (uint32_t)pbuf[10]<<16 |  (uint32_t)pbuf[11]<<24;
@@ -292,37 +311,22 @@ void DFRobot_MGC3130:: sensorDataRecv()
       nowTouch = pbuf[12] | (uint32_t)pbuf[13]<<8;
       if(pbuf[7] & 0x02){
         info.airWheelInfo = pbuf[16] | (uint32_t)pbuf[17]<<8;
-      }else{
-        info.airWheelInfo = 0;
       }
       if(pbuf[7] & 0x01){
         position = true;
         info.xPosition    = pbuf[18] | (uint32_t)pbuf[19]<<8;
         info.yPosition    = pbuf[20] | (uint32_t)pbuf[21]<<8;
         info.zPosition    = pbuf[22] | (uint32_t)pbuf[23]<<8;
-      }else{
-        position = false;
-        info.xPosition = 0;
-        info.yPosition = 0;
-        info.zPosition = 0;
       }
-    } else{
-        position = false;
-        info.gestureInfo = 0;
-        info.touchInfo = 0;
-        info.airWheelInfo = 0;
-        info.xPosition = 0;
-        info.yPosition = 0;
-        info.zPosition = 0;
+    } else if(pbuf[4] == 0x1F){
+      while(enableDataOutput()!=0){
+        delay(100);
+      }
+      while(lockDataOutput()!=0){
+        delay(100);
+      }
     }
   }else{
-    position = false;
-    info.gestureInfo = 0;
-    info.touchInfo = 0;
-    info.airWheelInfo = 0;
-    info.xPosition = 0;
-    info.yPosition = 0;
-    info.zPosition = 0;
     delay(5);
   }
 }
@@ -362,6 +366,7 @@ uint8_t DFRobot_MGC3130::read(void* pBuf, size_t size)
   _pWire->endTransmission();
   tsWrite(HIGH);
   tsInput();
+  delay(5);
   return size;
 }
 

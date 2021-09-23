@@ -1,6 +1,6 @@
 /*!
  * @file position.ino
- * @brief 位置识别，x,y,z轴上数据
+ * @brief 位置识别，x,y,z轴上数据(零点在触板的西南位置，丝印Down处)
  * @copyright Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  * @licence The MIT License (MIT)
  * @author [yangfeng]<feng.yang@dfrobot.com>
@@ -14,30 +14,31 @@
  *  3.3V-5V      VCC              Power
  *  SCL          SCL              I2C Clock
  *  SDA          SDA              I2C Data
- *  7            D                Digital port
+ *  DPin         D                Transfer Status Line
+ *  MCLRPin      MCLR             reset
  */
-
 #include <DFRobot_MGC3130.h>
 
+//建议使用以下引脚，但用户可自定义（要求引脚具有输入和输出功能）
 #if defined(ESP32) || defined(ESP8266)
-  uint8_t TSPin= D9;
-  uint8_t restPin= D3;
+  uint8_t DPin= D9;
+  uint8_t MCLRPin= D3;
 #elif defined(ARDUINO_SAM_ZERO)
-  uint8_t TSPin= 6;
-  uint8_t restPin= 7;
+  uint8_t DPin= 6;
+  uint8_t MCLRPin= 7;
 #else
-  uint8_t TSPin= 8;
-  uint8_t restPin= 9;
+  uint8_t DPin= 8;
+  uint8_t MCLRPin= 9;
 #endif
 
-DFRobot_MGC3130 myGesture(TSPin,restPin);
+DFRobot_MGC3130 myGesture(DPin,MCLRPin);
 
 void setup()
 {
   Serial.begin(115200);
   /**
    * @brief 初始化函数
-   * @return 返回0表示初始化成功，返回其他值表示初始化失败
+   * @return 返回true 表示初始化成功，返回false初始化失败
    */
   while(!myGesture.begin()){
     delay(100);
@@ -52,21 +53,6 @@ void setup()
     delay(100);
   }
   
-  /**
-   * @brief 设置传感器的输出数据格式
-   * @return 返回-1代表设置失败，0代表设置成功
-   */
-  while(myGesture.enableDataOutput()!=0){
-    delay(100);
-  }
-
-  /**
-   * @brief 锁定传感器的输出数据格式
-   * @return 返回-1代表设置失败，0代表设置成功
-   */
-  while(myGesture.lockDataOutput()!=0){
-    delay(100);
-  }
   Serial.println("config success!!!");
 }
 void loop()
@@ -82,10 +68,10 @@ void loop()
    */
   if(myGesture.havePositionInfo()){
     Serial.print("X: ");
-    Serial.print(myGesture.getXposition());
+    Serial.print(myGesture.getPositionX());
     Serial.print("   Y: ");
-    Serial.print(myGesture.getYposition());
+    Serial.print(myGesture.getPositionY());
     Serial.print("   Z: ");
-    Serial.println(myGesture.getZposition());
+    Serial.println(myGesture.getPositionZ());
   }
 }
