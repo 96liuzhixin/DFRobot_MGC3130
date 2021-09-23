@@ -41,7 +41,7 @@
 ```C++
   /**
    * @brief 初始化函数
-   * @return 返回0表示初始化成功，返回其他值表示初始化失败
+   * @return 返回true 表示初始化成功，返回false初始化失败
    */
   int begin(void);
 

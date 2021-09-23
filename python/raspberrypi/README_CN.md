@@ -40,7 +40,7 @@
 ```python
   '''
     @brief 初始化函数
-    @return 返回0表示初始化成功，返回其他值表示初始化失败
+    @return 返回True表示初始化成功，返回False表示初始化失败
   '''
   def begin(self)
 
