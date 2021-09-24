@@ -48,13 +48,13 @@
   '''
     @brief 复位传感器
   '''
-  def reset(self)
+  def reset(self):
 
   '''
     @brief 开启接触检测功能
     @return 返回-1代表设置失败，0代表设置成功
   '''
-  def enable_touch_detection(self)
+  def enable_touch_detection(self):
 
   '''
     @brief 关闭接触检测功能
@@ -108,7 +108,7 @@
     @brief 获取Y轴位置
     @return Y轴位置
   '''
-  def get_y_position(self):
+  def get_y_position(self)
 
   '''
     @brief 获取Z轴位置
