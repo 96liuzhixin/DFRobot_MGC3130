@@ -151,8 +151,8 @@
 | Board        | Work Well | Work Wrong | Untested | Remarks |
 | ------------ | :-------: | :--------: | :------: | ------- |
 | RaspberryPi2 |           |            |    √     |         |
-| RaspberryPi3 |           |            |    √     |         |
-| RaspberryPi4 |     √     |            |          |         |
+| RaspberryPi3 |     √     |            |          |         |
+| RaspberryPi4 |           |            |    √     |         |
 
 * Python Version
 
