@@ -1,6 +1,6 @@
 /*!
  * @file gesture.ino
- * @brief 手势识别，可以是up-->down 、down-->up 、 left-->right 、right-->left、Circle clockwise、Circle counterclockwise.
+ * @brief 手势识别，可以是up-->down,down-->up,left-->right,right-->left,Circle clockwise,Circle counterclockwise.
  * @copyright Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  * @licence The MIT License (MIT)
  * @author [yangfeng]<feng.yang@dfrobot.com>
