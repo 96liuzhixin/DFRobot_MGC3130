@@ -41,7 +41,7 @@ void setup()
    * @return 返回true 表示初始化成功，返回false初始化失败
    */
   while(!myGesture.begin()){
-    Serial.println("begin error!!!");
+    Serial.println("begin error! Please check whether the connection is correct");
     delay(100);
   };
   Serial.println("begin success!!!");
