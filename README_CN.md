@@ -47,78 +47,78 @@
   /**
    * @brief 复位传感器
    */
-  void reset();
+  void reset(void);
 
   /**
    * @brief 获取传感器数据
    */
-  void sensorDataRecv();
+  void sensorDataRecv(void);
 
   /**
    * @brief 使能手势识别功能
    * @return 返回-1代表设置失败，0代表设置成功
    */
-  int8_t enableGestures();
+  int8_t enableGestures(void);
 
   /**
    * @brief 关闭手势识别功能
    * @return 返回-1代表设置失败，0代表设置成功
    */
-  int8_t disableGestures();
+  int8_t disableGestures(void);
 
   /**
    * @brief 关闭AirWheel功能
    * @return 返回-1代表设置失败，0代表设置成功
    */
-  int8_t disableAirWheel();
+  int8_t disableAirWheel(void);
 
   /**
    * @brief 使能AirWheel功能
    * @return 返回-1代表设置失败，0代表设置成功
    */
-  int8_t enableAirWheel();
+  int8_t enableAirWheel(void);
 
   /**
    * @brief 关闭接近检测功能
    * @return 返回-1代表设置失败，0代表设置成功
    */
-  int8_t disableApproachDetection();
+  int8_t disableApproachDetection(void);
 
   /**
    * @brief 使能接近检测功能
    * @return 返回-1代表设置失败，0代表设置成功
    */
-  int8_t enableApproachDetection();
+  int8_t enableApproachDetection(void);
 
   /**
    * @brief 关闭接触检测功能
    * @return 返回-1代表设置失败，0代表设置成功
    */
-  int8_t disableTouchDetection();
+  int8_t disableTouchDetection(void);
 
   /**
    * @brief 开启接触检测功能
    * @return 返回-1代表设置失败，0代表设置成功
    */
-  int8_t enableTouchDetection();
+  int8_t enableTouchDetection(void);
 
   /**
    * @brief 获取X轴位置
    * @return X轴位置
    */
-  uint16_t getPositionX();
+  uint16_t getPositionX(void);
 
   /**
    * @brief 获取Y轴位置
    * @return Y轴位置
    */
-  uint16_t getPositionY();
+  uint16_t getPositionY(void);
 
   /**
    * @brief 获取Z轴位置
    * @return Z轴位置
    */
-  uint16_t getPositionZ();
+  uint16_t getPositionZ(void);
 
   /**
    * @brief 获取接触信息
@@ -126,19 +126,19 @@
    *         eDoubleTapCenter/eDoubleTapRight/eDoubleTapUp/eDoubleTapLeft/eDoubleTapDown/eTapCenter/
    *         eTapRight/eTapUp/eTapLeft/eTapDown/eTouchCenter/eTouchRight/eTouchUp/eTouchLeft/eTouchDown
    */
-  uint16_t getTouchInfo();
+  uint16_t getTouchInfo(void);
 
   /**
    * @brief 获取手势信息
    * @return 手势信息:eFilckR/eFilckL/eFilckU/eFilckD/eCircleClockwise/eCircleCounterclockwise
    */
-  uint8_t getGestureInfo();
+  uint8_t getGestureInfo(void);
 
   /**
    * @brief 监测是否有位置信息
    * @return 返回true，代表有位置信息，false代表没有
    */
-  bool havePositionInfo();
+  bool havePositionInfo(void);
 ```
 
 ## 兼容性
