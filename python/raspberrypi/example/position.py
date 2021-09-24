@@ -24,7 +24,7 @@ def setup():
     @return 返回0表示初始化成功，返回其他值表示初始化失败
   '''
   while(myGesture.begin()!= True):
-    print("begin err")
+    print("Begin err!!! Please check whether the connection is correct")
   print("begin success")
 
   '''
