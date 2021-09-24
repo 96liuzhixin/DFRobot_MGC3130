@@ -65,53 +65,53 @@ void loop()
   /**
    * @brief 获取接触信息
    * @return 接触信息:
-   *         eDoubleTapCenter/eDoubleTapEast/eDoubleTapNorth/eDoubleTapWest/eDoubleTapSouth/eTapCenter/
-   *         eTapEast/eTapNorth/eTapWest/eTapSouth/eTouchCenter/eTouchEast/eTouchNorth/eTouchWest/eTouchSouth
+   *         eDoubleTapCenter/eDoubleTapRight/eDoubleTapUp/eDoubleTapLeft/eDoubleTapDown/eTapCenter/
+   *         eTapRight/eTapUp/eTapLeft/eTapDown/eTouchCenter/eTouchRight/eTouchUp/eTouchLeft/eTouchDown
    */
   uint16_t info = myGesture.getTouchInfo();
   if(info & myGesture.eDoubleTapCenter){
     Serial.println("Double Tap Center electrode");
   } 
-  if(info & myGesture.eDoubleTapEast){
-    Serial.println("Double Tap East electrode");
+  if(info & myGesture.eDoubleTapRight){
+    Serial.println("Double Tap Right electrode");
   } 
-  if(info & myGesture.eDoubleTapNorth){
-    Serial.println("Double Tap North electrode");
+  if(info & myGesture.eDoubleTapUp){
+    Serial.println("Double Tap Up electrode");
   } 
-  if(info & myGesture.eDoubleTapWest){
-    Serial.println("Double Tap West electrode");
+  if(info & myGesture.eDoubleTapLeft){
+    Serial.println("Double Tap Left electrode");
   } 
-  if(info & myGesture.eDoubleTapSouth){
-    Serial.println("Double Tap South electrode");
+  if(info & myGesture.eDoubleTapDown){
+    Serial.println("Double Tap Down electrode");
   } 
   if(info & myGesture.eTapCenter){
     Serial.println("Tap Center electrode");
   } 
-  if(info & myGesture.eTapEast){
-    Serial.println("Tap East electrode");
+  if(info & myGesture.eTapRight){
+    Serial.println("Tap Right electrode");
   } 
-  if(info & myGesture.eTapNorth){
-    Serial.println("Tap North electrode");
+  if(info & myGesture.eTapUp){
+    Serial.println("Tap Up electrode");
   } 
-  if(info & myGesture.eTapWest){
-    Serial.println("Tap West electrode");
+  if(info & myGesture.eTapLeft){
+    Serial.println("Tap Left electrode");
   } 
-  if(info & myGesture.eTapSouth){
-    Serial.println("Tap South electrode");
+  if(info & myGesture.eTapDown){
+    Serial.println("Tap Down electrode");
   } 
   if(info & myGesture.eTouchCenter){
     Serial.println("Touch Center electrode");
   } 
-  if(info & myGesture.eTouchEast){
-    Serial.println("Touch East electrode");
+  if(info & myGesture.eTouchRight){
+    Serial.println("Touch Right electrode");
   } 
-  if(info & myGesture.eTouchNorth){
-    Serial.println("Touch North electrode");
+  if(info & myGesture.eTouchUp){
+    Serial.println("Touch Up electrode");
   } 
-  if(info & myGesture.eTouchWest){
-    Serial.println("Touch West electrode");
+  if(info & myGesture.eTouchLeft){
+    Serial.println("Touch Left electrode");
   } 
-  if(info & myGesture.eTouchSouth){
-    Serial.println("Touch South electrode");
+  if(info & myGesture.eTouchDown){
+    Serial.println("Touch Down electrode");
   }
 }

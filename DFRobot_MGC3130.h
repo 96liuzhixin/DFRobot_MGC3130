@@ -47,31 +47,31 @@ public:
   typedef enum{
     eNoGesture = 0,           /**< No gesture */
     eGarbageModel,            /**< Garbage model */
-    eFilckR,                  /**< Flick West to East */
-    eFilckL,                  /**< Flick East to West */
-    eFilckU,                  /**< Flick South to North */
-    eFilckD,                  /**< Flick North to South */
+    eFilckR,                  /**< Flick Left to East */
+    eFilckL,                  /**< Flick East to Left */
+    eFilckU,                  /**< Flick Down to Up */
+    eFilckD,                  /**< Flick Up to Down */
     eCircleClockwise,         /**< Circle clockwise (only active if AirWheel disabled) */
     eCircleCounterclockwise,  /**< Circle counterclockwise (only active if AirWheel disabled) */
   }eGestureInfo_t;
   
   //Touch Info
   typedef enum{
-    eTouchSouth       = 1,           /**< Touch South electrode */
-    eTouchWest        = 2,           /**< Touch West electrode */
-    eTouchNorth       = 4,           /**< Touch North electrode */
-    eTouchEast        = 8,           /**< Touch East electrode */
-    eTouchCenter      = 16,          /**< Touch Center electrode */
-    eTapSouth         = 32,          /**< Tap South electrode*/
-    eTapWest          = 64,          /**< Tap West electrode */
-    eTapNorth         = 128,         /**< Tap North electrode */
-    eTapEast          = 256,         /**< Tap East electrode */
-    eTapCenter        = 512,         /**< Tap Center electrode */
-    eDoubleTapSouth   = 1024,        /**< Double Tap South electrode*/
-    eDoubleTapWest    = 2048,        /**< Double Tap West electrode */
-    eDoubleTapNorth   = 4096,        /**< Double Tap North electrode */
-    eDoubleTapEast    = 8192,        /**< Double Tap East electrode */
-    eDoubleTapCenter  = 16384,       /**< Double Tap Center electrode */
+    eTouchDown         = 1,           /**< Touch Down electrode */
+    eTouchLeft         = 2,           /**< Touch Left electrode */
+    eTouchUp           = 4,           /**< Touch Up electrode */
+    eTouchRight        = 8,           /**< Touch East electrode */
+    eTouchCenter       = 16,          /**< Touch Center electrode */
+    eTapDown           = 32,          /**< Tap Down electrode*/
+    eTapLeft           = 64,          /**< Tap Left electrode */
+    eTapUp             = 128,         /**< Tap Up electrode */
+    eTapRight          = 256,         /**< Tap East electrode */
+    eTapCenter         = 512,         /**< Tap Center electrode */
+    eDoubleTapDown     = 1024,        /**< Double Tap Down electrode*/
+    eDoubleTapLeft     = 2048,        /**< Double Tap Left electrode */
+    eDoubleTapUp       = 4096,        /**< Double Tap Up electrode */
+    eDoubleTapRight    = 8192,        /**< Double Tap East electrode */
+    eDoubleTapCenter   = 16384,       /**< Double Tap Center electrode */
   }eTouchInfo_t;
 
   DFRobot_MGC3130(uint8_t DPin,uint8_t MCLRPin ,TwoWire *pWire=&Wire);
@@ -160,8 +160,8 @@ public:
   /**
    * @brief 获取接触信息
    * @return 接触信息:
-   *         eDoubleTapCenter/eDoubleTapEast/eDoubleTapNorth/eDoubleTapWest/eDoubleTapSouth/eTapCenter/
-   *         eTapEast/eTapNorth/eTapWest/eTapSouth/eTouchCenter/eTouchEast/eTouchNorth/eTouchWest/eTouchSouth
+   *         eDoubleTapCenter/eDoubleTapRight/eDoubleTapUp/eDoubleTapLeft/eDoubleTapDown/eTapCenter/
+   *         eTapRight/eTapUp/eTapLeft/eTapDown/eTouchCenter/eTouchRight/eTouchUp/eTouchLeft/eTouchDown
    */
   uint16_t getTouchInfo(void);
 

@@ -53,20 +53,20 @@ class DFRobot_MGC3130(object):
     self.FILCK_D                      = 5
     self.CIRCLE_CLOCKWISE             = 6
     self.CIRCLE_COUNTERCLOCKWISE      = 7
-    self.TOUCH_SOUTH                  = 1
-    self.TOUCH_WEST                   = 2
-    self.TOUCH_NORTH                  = 4
-    self.TOUCH_EAST                   = 8
+    self.TOUCH_DOWN                   = 1
+    self.TOUCH_LEFT                   = 2
+    self.TOUCH_UP                     = 4
+    self.TOUCH_RIGHT                  = 8
     self.TPUCH_CENTER                 = 16
-    self.TAP_SOUTH                    = 32
-    self.TAP_WEST                     = 64
-    self.TAP_NORTH                    = 128
-    self.TAP_EAST                     = 256
+    self.TAP_DOWN                     = 32
+    self.TAP_LEFT                     = 64
+    self.TAP_UP                       = 128
+    self.TAP_RIGHT                    = 256
     self.TAP_CENTER                   = 512
-    self.DOUBLE_TAP_SOUTH             = 1024
-    self.DOUBLE_TAP_WEST              = 2048
-    self.DOUBLE_TAP_NORTH             = 4096
-    self.DOUBLE_TAP_EAST              = 8192
+    self.DOUBLE_TAP_DOWN              = 1024
+    self.DOUBLE_TAP_LEFT              = 2048
+    self.DOUBLE_TAP_UP                = 4096
+    self.DOUBLE_TAP_RIGHT             = 8192
     self.DOUBLE_TAP_CENTER            = 16384
     self._ts_pin = d_pin
     self._reset_pin = mclr_pin
@@ -254,9 +254,9 @@ class DFRobot_MGC3130(object):
   '''
     @brief 获取接触信息
     @return 接触信息:
-              DOUBLE_TAP_CENTER/DOUBLE_TAP_EAST/DOUBLE_TAP_NORTH/DOUBLE_TAP_WEST/DOUBLE_TAP_SOUTH
-              TAP_CENTER/TAP_EAST/TAP_NORTH/TAP_WEST/TAP_SOUTH
-              TPUCH_CENTER/TOUCH_EAST/TOUCH_NORTH/TOUCH_WEST/TOUCH_SOUTH
+              DOUBLE_TAP_CENTER/DOUBLE_TAP_RIGHT/DOUBLE_TAP_UP/DOUBLE_TAP_LEFT/DOUBLE_TAP_DOWN
+              TAP_CENTER/TAP_RIGHT/TAP_UP/TAP_LEFT/TAP_DOWN
+              TPUCH_CENTER/TOUCH_RIGHT/TOUCH_UP/TOUCH_LEFT/TOUCH_DOWN
   '''
   def get_touch_info(self):
     data = self.touch_info & 0xFFFF

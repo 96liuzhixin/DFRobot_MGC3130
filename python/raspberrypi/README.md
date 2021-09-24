@@ -1,6 +1,6 @@
 # DFRobot_MGC3130
 
-- [Chinese Version](./README_CN.md)
+- [中文版](./README_CN.md)
 
 3D手势识别传感器是一款集成3D手势识别和运动跟踪为一体的交互式传感器，传感器可以在有效范围内识别手指的顺时针/逆时针转动方向和手指的运动方向等。传感器基于Microchip专利的GestIC®技术，采用电近场传感技术，包括了开发3D手势输入传感系统所有的块图，具有先进的3D信号处理单元，有效检测距离为0~10 cm。
 
@@ -119,9 +119,9 @@
   '''
     @brief 获取接触信息
     @return 接触信息:
-              DOUBLE_TAP_CENTER/DOUBLE_TAP_EAST/DOUBLE_TAP_NORTH/DOUBLE_TAP_WEST/DOUBLE_TAP_SOUTH
-              TAP_CENTER/TAP_EAST/TAP_NORTH/TAP_WEST/TAP_SOUTH
-              TPUCH_CENTER/TOUCH_EAST/TOUCH_NORTH/TOUCH_WEST/TOUCH_SOUTH
+              DOUBLE_TAP_CENTER/DOUBLE_TAP_RIGHT/DOUBLE_TAP_UP/DOUBLE_TAP_WEST/DOUBLE_TAP_DOWN
+              TAP_CENTER/TAP_RIGHT/TAP_UP/TAP_WEST/TAP_DOWN
+              TPUCH_CENTER/TOUCH_RIGHT/TOUCH_UP/TOUCH_WEST/TOUCH_DOWN
   '''
   def get_touch_info(self)
 

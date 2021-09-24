@@ -123,8 +123,8 @@
   /**
    * @brief 获取接触信息
    * @return 接触信息:
-   *         eDoubleTapCenter/eDoubleTapEast/eDoubleTapNorth/eDoubleTapWest/eDoubleTapSouth/eTapCenter/
-   *         eTapEast/eTapNorth/eTapWest/eTapSouth/eTouchCenter/eTouchEast/eTouchNorth/eTouchWest/eTouchSouth
+   *         eDoubleTapCenter/eDoubleTapRight/eDoubleTapUp/eDoubleTapLeft/eDoubleTapDown/eTapCenter/
+   *         eTapRight/eTapUp/eTapLeft/eTapDown/eTouchCenter/eTouchRight/eTouchUp/eTouchLeft/eTouchDown
    */
   uint16_t getTouchInfo();
 

@@ -46,20 +46,20 @@ eFilckU	LITERAL1
 eFilckD	LITERAL1
 eCircleClockwise	LITERAL1
 eCircleCounterclockwise	LITERAL1
-eTouchSouth	LITERAL1
-eTouchWest	LITERAL1
-eTouchNorth	LITERAL1
-eTouchEast	LITERAL1
+eTouchDown	LITERAL1
+eTouchLeft	LITERAL1
+eTouchUp	LITERAL1
+eTouchRight	LITERAL1
 eTouchCenter	LITERAL1
-eTapSouth	LITERAL1
-eTapWest	LITERAL1
-eTapNorth	LITERAL1
-eTapEast	LITERAL1
+eTapDown	LITERAL1
+eTapLeft	LITERAL1
+eTapUp	LITERAL1
+eTapRight	LITERAL1
 eTapCenter	LITERAL1
-eDoubleTapSouth	LITERAL1
-eDoubleTapWest	LITERAL1
-eDoubleTapNorth	LITERAL1
-eDoubleTapEast	LITERAL1
+eDoubleTapDown	LITERAL1
+eDoubleTapLeft	LITERAL1
+eDoubleTapUp	LITERAL1
+eDoubleTapRight	LITERAL1
 eDoubleTapCenter	LITERAL1
 
  

@@ -44,41 +44,41 @@ def loop():
   '''
     @brief 获取接触信息
     @return 接触信息:
-              DOUBLE_TAP_CENTER/DOUBLE_TAP_EAST/DOUBLE_TAP_NORTH/DOUBLE_TAP_WEST/DOUBLE_TAP_SOUTH
-              TAP_CENTER/TAP_EAST/TAP_NORTH/TAP_WEST/TAP_SOUTH
-              TPUCH_CENTER/TOUCH_EAST/TOUCH_NORTH/TOUCH_WEST/TOUCH_SOUTH
+              DOUBLE_TAP_CENTER/DOUBLE_TAP_RIGHT/DOUBLE_TAP_UP/DOUBLE_TAP_LEFT/DOUBLE_TAP_DOWN
+              TAP_CENTER/TAP_RIGHT/TAP_UP/TAP_LEFT/TAP_DOWN
+              TPUCH_CENTER/TOUCH_RIGHT/TOUCH_UP/TOUCH_LEFT/TOUCH_DOWN
   '''
   info = myGesture.get_touch_info()
   if(info & myGesture.DOUBLE_TAP_CENTER):
     print("Double Tap Center electrode")
-  elif(info & myGesture.DOUBLE_TAP_EAST):
-    print("Double Tap East electrode")
-  elif(info & myGesture.DOUBLE_TAP_NORTH):
-    print("Double Tap North electrode")
-  elif(info & myGesture.DOUBLE_TAP_WEST):
-    print("Double Tap West electrode")
-  elif(info & myGesture.DOUBLE_TAP_SOUTH):
-    print("Double Tap South electrode")
+  elif(info & myGesture.DOUBLE_TAP_RIGHT):
+    print("Double Tap Right electrode")
+  elif(info & myGesture.DOUBLE_TAP_UP):
+    print("Double Tap Up electrode")
+  elif(info & myGesture.DOUBLE_TAP_LEFT):
+    print("Double Tap Left electrode")
+  elif(info & myGesture.DOUBLE_TAP_DOWN):
+    print("Double Tap Down electrode")
   elif(info & myGesture.TAP_CENTER):
     print("Tap Center electrode")
-  elif(info & myGesture.TAP_EAST):
-    print("Tap East electrode")
-  elif(info & myGesture.TAP_NORTH):
-    print("Tap North electrode")
-  elif(info & myGesture.TAP_WEST):
-    print("Tap West electrode")
-  elif(info & myGesture.TAP_SOUTH):
-    print("Tap South electrode")
+  elif(info & myGesture.TAP_RIGHT):
+    print("Tap Right electrode")
+  elif(info & myGesture.TAP_UP):
+    print("Tap Up electrode")
+  elif(info & myGesture.TAP_LEFT):
+    print("Tap Left electrode")
+  elif(info & myGesture.TAP_DOWN):
+    print("Tap Down electrode")
   elif(info & myGesture.TPUCH_CENTER):
     print("Touch Center electrode")
-  elif(info & myGesture.TOUCH_EAST):
-    print("Touch East electrode")
-  elif(info & myGesture.TOUCH_NORTH):
-    print("Touch North electrode")
-  elif(info & myGesture.TOUCH_WEST):
-    print("Touch West electrode")
-  elif(info & myGesture.TOUCH_SOUTH):
-    print("Touch South electrode")
+  elif(info & myGesture.TOUCH_RIGHT):
+    print("Touch Right electrode")
+  elif(info & myGesture.TOUCH_UP):
+    print("Touch Up electrode")
+  elif(info & myGesture.TOUCH_LEFT):
+    print("Touch Left electrode")
+  elif(info & myGesture.TOUCH_DOWN):
+    print("Touch Down electrode")
 
 
 if __name__ == "__main__":
