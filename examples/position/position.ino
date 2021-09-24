@@ -1,6 +1,6 @@
 /*!
  * @file position.ino
- * @brief 位置识别，x,y,z轴上数据(零点在触板的西南位置，丝印Down处)
+ * @brief 位置识别,x,y,z轴上数据(零点在触板的西南位置,丝印Down处)
  * @copyright Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  * @licence The MIT License (MIT)
  * @author [yangfeng]<feng.yang@dfrobot.com>
