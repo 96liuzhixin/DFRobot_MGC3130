@@ -8,7 +8,7 @@
 ![](./resources/images/SEN0202.jpg)
 
 
-## 产品链接（https://www.dfrobot.com.cn/goods-1342.html）
+## 产品链接(https://www.dfrobot.com.cn/goods-1342.html)
 
     SKU：SEN0202
 
