@@ -72,7 +72,7 @@
     @brief 关闭接近检测功能
     @return 返回-1代表设置失败，0代表设置成功
   '''
-  def disable_approach_detection(self)
+  def disable_approach_detection(self):
 
   '''
     @brief 使能AirWheel功能
@@ -108,7 +108,7 @@
     @brief 获取Y轴位置
     @return Y轴位置
   '''
-  def get_y_position(self)
+  def get_y_position(self):
 
   '''
     @brief 获取Z轴位置
