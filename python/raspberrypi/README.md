@@ -48,13 +48,13 @@
   '''
     @brief 复位传感器
   '''
-  def reset(self):
+  def reset(self)
 
   '''
     @brief 开启接触检测功能
     @return 返回-1代表设置失败，0代表设置成功
   '''
-  def enable_touch_detection(self):
+  def enable_touch_detection(self)
 
   '''
     @brief 关闭接触检测功能
@@ -72,7 +72,7 @@
     @brief 关闭接近检测功能
     @return 返回-1代表设置失败，0代表设置成功
   '''
-  def disable_approach_detection(self):
+  def disable_approach_detection(self)
 
   '''
     @brief 使能AirWheel功能
