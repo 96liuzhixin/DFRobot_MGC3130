@@ -9,7 +9,7 @@
 ![](../../resources/images/SEN0202.jpg)
 
 
-## Product Link（https://www.dfrobot.com/product-1538.html）
+## Product Link(https://www.dfrobot.com/product-1538.html)
 
     SKU：SEN0202
 
