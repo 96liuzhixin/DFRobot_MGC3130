@@ -43,78 +43,78 @@
     @brief 初始化函数
     @return 返回True表示初始化成功，返回False表示初始化失败
   '''
-  def begin(self)
+  def begin(self):
 
   '''
     @brief 复位传感器
   '''
-  def reset(self)
+  def reset(self):
 
   '''
     @brief 开启接触检测功能
     @return 返回-1代表设置失败，0代表设置成功
   '''
-  def enable_touch_detection(self)
+  def enable_touch_detection(self):
 
   '''
     @brief 关闭接触检测功能
     @return 返回-1代表设置失败，0代表设置成功
   '''
-  def disable_touch_detection(self)
+  def disable_touch_detection(self):
 
   '''
     @brief 使能接近检测功能
     @return 返回-1代表设置失败，0代表设置成功
   '''
-  def enable_approach_detection(self)
+  def enable_approach_detection(self):
 
   '''
     @brief 关闭接近检测功能
     @return 返回-1代表设置失败，0代表设置成功
   '''
-  def disable_approach_detection(self)
+  def disable_approach_detection(self):
 
   '''
     @brief 使能AirWheel功能
     @return 返回-1代表设置失败，0代表设置成功
   '''
-  def enable_air_wheel(self)
+  def enable_air_wheel(self):
 
   '''
     @brief 关闭手势识别功能
     @return 返回-1代表设置失败，0代表设置成功
   '''
-  def disable_air_wheel(self)
+  def disable_air_wheel(self):
 
   '''
     @brief 使能手势识别功能
     @return 返回-1代表设置失败，0代表设置成功
   '''
-  def enable_gestures(self)
+  def enable_gestures(self):
 
   '''
     @brief 关闭手势识别功能
     @return 返回-1代表设置失败，0代表设置成功
   '''
-  def disable_gestures(self)
+  def disable_gestures(self):
 
   '''
     @brief 获取X轴位置
     @return X轴位置
   '''
-  def get_x_position(self)
+  def get_x_position(self):
 
   '''
     @brief 获取Y轴位置
     @return Y轴位置
   '''
-  def get_y_position(self)
+  def get_y_position(self):
 
   '''
     @brief 获取Z轴位置
     @return Z轴位置
   '''
-  def get_z_position(self)
+  def get_z_position(self):
 
   '''
     @brief 获取接触信息
@@ -123,25 +123,25 @@
               TAP_CENTER/TAP_RIGHT/TAP_UP/TAP_WEST/TAP_DOWN
               TPUCH_CENTER/TOUCH_RIGHT/TOUCH_UP/TOUCH_WEST/TOUCH_DOWN
   '''
-  def get_touch_info(self)
+  def get_touch_info(self):
 
 
   '''
     @brief 获取手势信息
     @return 手势信息
   '''
-  def get_gesture_info(self)
+  def get_gesture_info(self):
 
   '''
     @brief 监测是否有位置信息
     @return 返回true，代表有位置信息，false代表没有
   '''
-  def have_position_info(self)
+  def have_position_info(self):
 
   '''
     @brief 获取传感器数据
   '''
-  def sensor_data_recv(self)
+  def sensor_data_recv(self):
 ```
 
 ## Compatibility
